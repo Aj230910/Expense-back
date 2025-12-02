@@ -8,7 +8,7 @@ const {
 
 const router = express.Router();
 
-router.post("/", addTransaction);  // changed from "/add"
+router.post("/add", addTransaction);   // ⭐ KEEP THIS
 router.get("/", getTransactions);
 router.delete("/:id", deleteTransaction);
 router.put("/:id", updateTransaction);
