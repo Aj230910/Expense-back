@@ -5,7 +5,7 @@ const TransactionSchema = new mongoose.Schema({
   amount: { type: Number, required: true },
   category: { type: String, required: true },
   type: { type: String, enum: ["income", "expense"], required: true },
-  deviceId: { type: String, required: true },   // ⭐ Add this
+  deviceId: { type: String, required: true },  // ⭐ ADD THIS
   date: { type: Date, default: Date.now }
 });
 
