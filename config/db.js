@@ -2,12 +2,20 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://ambrishjeyan023_db_user:JEAesFUk4OGajftE@cluster0.nods8hr.mongodb.net/expense_tracker?retryWrites=true&w=majority"
-    );
-    console.log("MongoDB Atlas Connected Successfully");
+    const uri = process.env.MONGO_URI;
+
+    if (!uri) {
+      throw new Error("MONGO_URI is missing from environment variables!");
+    }
+
+    await mongoose.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    console.log("MongoDB Connected Successfully");
   } catch (error) {
-    console.log("MongoDB Connection Error:", error);
+    console.error("MongoDB Connection Error:", error.message);
   }
 };
 
